@@ -21,7 +21,7 @@
 import urllib.request
 import time
 import json
-import random
+import secrets
 
 # Server API URLs
 QUERY = "http://localhost:8080/query?id={}"
@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
     # Query the price once every N seconds.
     for _ in iter(range(N)):
-        quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
+        quotes = json.loads(urllib.request.urlopen(QUERY.format(secrets.SystemRandom().random())).read())
 
         """ ----------- Update to get the ratio --------------- """
         prices = {}
